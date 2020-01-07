@@ -84,7 +84,7 @@ class Client
      */
     protected function buildPacket()
     {
-        $packet = chr(0x1B);
+        $packet = chr(0x23);
         $packet .= str_repeat(chr(0x00), 47);
 
         return $packet;
