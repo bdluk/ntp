@@ -163,6 +163,8 @@ class Socket
             if (!$this->resource) {
                 throw new \Exception("Unable to create socket: '{$errno}' '{$errstr}'");
             }
+            // now set the stream timeout, the timeout set in fsockopen() open sets the timeout for the initial connect
+            stream_set_timeout($this->resource,$this->timeout);
         }
     }
 }
