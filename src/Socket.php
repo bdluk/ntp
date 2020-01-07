@@ -84,7 +84,15 @@ class Socket
             throw new \Exception('Connection timed out');
         }
 
-        return fread($this->resource, 48);
+        $res = fread($this->resource, 48);
+        
+        $info = $this->getMetadata();
+        if (''===$res || true === $info['timed_out']) {
+	        throw new \Exception('Connection timed out');
+            return false;
+        } else {
+        	return $res;
+        }
     }
 
     /**
